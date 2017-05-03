@@ -8,5 +8,8 @@ public class Main {
 		conexion.connect();
 		conexion.close();
 	}
+	
+	Proveedor p = new Proveedor();
+	
 
 }
