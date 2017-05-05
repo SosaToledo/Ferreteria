@@ -3,20 +3,17 @@ import Vista.*;
 import Modelo.*;
 
 public class Coordinador {
-	//definimos todas las clases que vamos a usar en un futuro
+	//inicializamos todas las clases que vamos a usar en un futuro
 	
 	//Clases de la vista
-	private Principal miVentanaPrincipal;
-	private NuevoArticulo miNuevoArticulo;
-	private NuevaCategoria miNuevaCategoria;
-	private NuevoProveedor miNuevoProveedor;
+	private Principal miVentanaPrincipal = new Principal();
+	private NuevoArticulo miNuevoArticulo= new NuevoArticulo();
+	private NuevaCategoria miNuevaCategoria= new NuevaCategoria();
+	private NuevoProveedor miNuevoProveedor= new NuevoProveedor();
 	//Clases del modelo
-	private ArticuloDao articuloDao;
-	private Articulo articulo;
-	private Categoria categoria;
-	private CategoriaDao categoriaDao;
-	private Proveedor proveedor;
-	private ProveedorDao proveedorDao;
+	private ArticuloDao articuloDao= new ArticuloDao();
+	private CategoriaDao categoriaDao= new CategoriaDao();
+	private ProveedorDao proveedorDao= new ProveedorDao();
 	
 	//Clases Controlador
 	
@@ -54,17 +51,8 @@ public class Coordinador {
 	public void setArticuloDao(ArticuloDao articuloDao) {
 		this.articuloDao = articuloDao;
 	}
-	public void setArticulo(Articulo articulo) {
-		this.articulo = articulo;
-	}
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
 	public void setCategoriaDao(CategoriaDao categoriaDao) {
 		this.categoriaDao = categoriaDao;
-	}
-	public void setProveedor(Proveedor proveedor) {
-		this.proveedor = proveedor;
 	}
 	public void setProveedorDao(ProveedorDao proveedorDao) {
 		this.proveedorDao = proveedorDao;

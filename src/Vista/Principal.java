@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
-	private Coordinador miCoordinador;
+	private Coordinador miCoordinador = new Coordinador();
 
 	//Metodos declarados por nosotros//
 	///////////////////////////////////
