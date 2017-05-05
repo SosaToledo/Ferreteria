@@ -4,25 +4,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
-
 public class Conexion {
 	private  static String url = "jdbc:postgresql://localhost:5432/postgres";
 	private  static String user = "postgres";
 	private  static String password = "postgres";
 	private  static Connection connection = null;
 	
-	
-	
-	public Conexion() {
-		super();
-	}
 
 	public static Connection getConnection(){
 		if (connection == null){
 			try {
 				Class.forName("org.postgresql.Driver");
 				connection=DriverManager.getConnection(url, user, password);
+				System.out.println("Conexiòn establecida");
 				return connection;
 			} catch (Exception e) {
 				// TODO: handle exception

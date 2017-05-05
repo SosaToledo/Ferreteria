@@ -1,11 +1,19 @@
 package Controlador;
 
 
+
+import java.sql.Connection;
+
 import Modelo.*;
 import Vista.*;
 
 public class ControladorPrincipal {
 	public void iniciar(){
+		
+		//Iniciar la conexion
+		
+		Connection conn = Conexion.getConnection();
+		
 		//Inicializar todas las clases que se van a utilizar
 		
 		//Estas pertenecen a vista
