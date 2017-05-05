@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
-	private Coordinador miCoordinador = new Coordinador();
+	private Coordinador miCoordinador;
 
 	//Metodos declarados por nosotros//
 	///////////////////////////////////
@@ -69,4 +69,10 @@ public class Principal extends JFrame {
 		btnNuevoProveedor.setBounds(122, 149, 199, 29);
 		contentPane.add(btnNuevoProveedor);
 	}
+	
+	public static void main(String[] ar) {
+        JFrame f=new Principal();
+        f.setBounds(10,10,300,200);
+        f.setVisible(true);
+    }
 }

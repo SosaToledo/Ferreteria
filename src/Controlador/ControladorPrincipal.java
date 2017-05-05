@@ -1,6 +1,5 @@
 package Controlador;
 
-import javax.swing.plaf.ComponentInputMapUIResource;
 
 import Modelo.*;
 import Vista.*;

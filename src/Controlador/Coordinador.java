@@ -6,14 +6,15 @@ public class Coordinador {
 	//inicializamos todas las clases que vamos a usar en un futuro
 	
 	//Clases de la vista
-	private Principal miVentanaPrincipal = new Principal();
-	private NuevoArticulo miNuevoArticulo= new NuevoArticulo();
-	private NuevaCategoria miNuevaCategoria= new NuevaCategoria();
-	private NuevoProveedor miNuevoProveedor= new NuevoProveedor();
+	private Principal miVentanaPrincipal;
+	private NuevoArticulo miNuevoArticulo;
+	private NuevaCategoria miNuevaCategoria;
+	private NuevoProveedor miNuevoProveedor;
+	
 	//Clases del modelo
-	private ArticuloDao articuloDao= new ArticuloDao();
-	private CategoriaDao categoriaDao= new CategoriaDao();
-	private ProveedorDao proveedorDao= new ProveedorDao();
+	private ArticuloDao articuloDao;
+	private CategoriaDao categoriaDao;
+	private ProveedorDao proveedorDao;
 	
 	//Clases Controlador
 	
@@ -24,18 +25,6 @@ public class Coordinador {
 	//Aca al final solo declaramos los metodos para setear las instancias que vamos a usar//
 	////////////////////////////////////////////////////////////////////////////////////////
 	
-	public void nuevoArticulo() {
-		miNuevoArticulo.setVisible(true);
-	}
-	public void nuevaCategoria(){
-		miNuevaCategoria.setVisible(true);
-	}
-	public void nuevoProveedor(){
-		miNuevoProveedor.setVisible(true);
-	}
-	public NuevoArticulo getMiNuevoArticulo() {
-		return miNuevoArticulo;
-	}
 	public void setMiVentanaPrincipal(Principal miVentanaPrincipal) {
 		this.miVentanaPrincipal = miVentanaPrincipal;
 	}
@@ -62,6 +51,21 @@ public class Coordinador {
 	}
 	public void setLogica(Logica logica) {
 		this.logica = logica;
+	}
+	
+	//Acciones generadas por el usuario
+	
+	public void nuevoArticulo() {
+		miNuevoArticulo.setVisible(true);
+	}
+	public void nuevaCategoria(){
+		miNuevaCategoria.setVisible(true);
+	}
+	public void nuevoProveedor(){
+		miNuevoProveedor.setVisible(true);
+	}
+	public NuevoArticulo getMiNuevoArticulo() {
+		return miNuevoArticulo;
 	}
 	
 }
