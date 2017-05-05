@@ -7,38 +7,31 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controlador.Coordinador;
+
+import javax.swing.JLabel;
+
 public class NuevoArticulo extends JFrame {
-
+	//Atributos
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NuevoArticulo frame = new NuevoArticulo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private Coordinador miCoordinador = new Coordinador();
+	
+	//Metodos generados por nosotros
+	public void setCoordinador(Coordinador miCoordinador) {
+		this.miCoordinador=miCoordinador;
 	}
-
-	/**
-	 * Create the frame.
-	 */
+	
+	//Metodos auto-generados (el constructor por ej)
 	public NuevoArticulo() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNuevoArticulo = new JLabel("Nuevo Articulo");
+		lblNuevoArticulo.setBounds(10, 11, 414, 30);
+		contentPane.add(lblNuevoArticulo);
 	}
-	
-	
-
 }
