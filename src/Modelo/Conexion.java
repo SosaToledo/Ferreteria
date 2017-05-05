@@ -7,24 +7,33 @@ import java.sql.SQLException;
 import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
 
 public class Conexion {
-	private  String url = "jdbc:postgresql://localhost:5432/postgres";
-	private  String user = "postgres";
-	private  String password = "postgres";
-	private  Connection connection;
+	private  static String url = "jdbc:postgresql://localhost:5432/postgres";
+	private  static String user = "postgres";
+	private  static String password = "postgres";
+	private  static Connection connection = null;
 	
-	public Connection getConnection(){
+	
+	
+	public Conexion() {
+		super();
+	}
+
+	public static Connection getConnection(){
+		if (connection == null){
+			try {
+				Class.forName("org.postgresql.Driver");
+				connection=DriverManager.getConnection(url, user, password);
+				return connection;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Error al conectarse a la base");
+			}
+		}
 		return connection;
 	}
 	
 	public void connect(){
-		try {
-			Class.forName("org.postgresql.Driver");
-			connection=DriverManager.getConnection(url, user, password);
-			System.out.println("conectado a la base");
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("Error al conectarse a la base");
-		}
+		
 	}
 	public void close(){
 		try {

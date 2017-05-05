@@ -8,14 +8,17 @@ import Vista.*;
 public class ControladorPrincipal {
 	public void iniciar(){
 		//Inicializar todas las clases que se van a utilizar
+		
 		//Estas pertenecen a vista
 		Principal miVentanaPrincipal = new Principal();
 		NuevoArticulo miNuevoArticulo = new NuevoArticulo();
 		NuevaCategoria miNuevaCategoria = new NuevaCategoria();
 		NuevoProveedor miNuevoProveedor = new NuevoProveedor();
+		
 		//estas pertenecen a controlador
 		Coordinador miCoordinador = new Coordinador();
 		Logica miLogica = new Logica();
+		
 		//Estas a Modelo
 		ArticuloDao articuloDao = new ArticuloDao();
 		CategoriaDao categoriaDao = new CategoriaDao();
