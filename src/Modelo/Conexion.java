@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-	private  static String url = "jdbc:postgresql://localhost:5432/postgres";
+	private  static String url = "jdbc:postgresql://localhost:5432/Ferreteria";
 	private  static String user = "postgres";
 	private  static String password = "postgres";
 	private  static Connection connection = null;
@@ -29,7 +29,7 @@ public class Conexion {
 	public void connect(){
 		
 	}
-	public void close(){
+	public static void close(){
 		try {
 			connection.close();
 			System.out.println("Se cerro la conexion");

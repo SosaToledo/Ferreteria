@@ -3,6 +3,12 @@ package Modelo;
 public class Categoria {
 	private String nombre;
 	private int id;
+	
+	public Categoria(String nombre, int id) {
+		super();
+		this.nombre = nombre;
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}
@@ -17,6 +23,7 @@ public class Categoria {
 	}
 	public Categoria(String nombre) {
 		super();
+		this.id = 0;
 		this.nombre = nombre;
 	}
 	

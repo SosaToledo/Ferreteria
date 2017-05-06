@@ -9,6 +9,7 @@ public class Proveedor {
 	
 	public Proveedor(String nombre) {
 		super();
+		this.id = 0;
 		this.nombre = nombre;
 	}
 

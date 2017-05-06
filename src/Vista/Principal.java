@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.Coordinador;
+import Modelo.Conexion;
 
 import javax.swing.JLabel;
 import java.awt.Font;

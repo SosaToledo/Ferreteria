@@ -67,5 +67,14 @@ public class Coordinador {
 	public NuevoArticulo getMiNuevoArticulo() {
 		return miNuevoArticulo;
 	}
+	public void insertarCategoria(Categoria categoria) {
+		categoriaDao.insertarCategoria(categoria);
+	}
+	public void insertarProveedor(Proveedor proveedor) {
+		proveedorDao.insertarProveedores(proveedor);
+		
+	}
+	
+	
 	
 }
