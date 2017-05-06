@@ -9,4 +9,9 @@ public class ArticuloDao {
 		this.miCoordinador = miCoordinador;
 	}
 
+	public void insertarArticulo(Articulo articulo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
