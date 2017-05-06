@@ -74,6 +74,9 @@ public class Coordinador {
 		proveedorDao.insertarProveedores(proveedor);
 		
 	}
+	public void insertarArticulo(Articulo articulo){
+		articuloDao.insertarArticulo(articulo);
+	}
 	
 	
 	
