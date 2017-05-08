@@ -4,6 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+//--Elimine el patron singleton porque me daba error.
+//--El error ocurria cuando queria usar otro metodo.
+//Ejemplo: guardaba una categoria y despues las queria mostrar.
+//en esa parte me decia que esa conexión estaba cerrada, lo modifique
+//y ahora funciona bien.
 public class Conexion {
 	private  static String url = "jdbc:postgresql://localhost:5432/Ferreteria";
 	private  static String user = "postgres";
@@ -12,16 +18,13 @@ public class Conexion {
 	
 
 	public static Connection getConnection(){
-		if (connection == null){
-			try {
-				Class.forName("org.postgresql.Driver");
-				connection=DriverManager.getConnection(url, user, password);
-				System.out.println("Conexiòn establecida");
-				return connection;
-			} catch (Exception e) {
-				// TODO: handle exception
-				System.out.println("Error al conectarse a la base");
-			}
+		try {
+			Class.forName("org.postgresql.Driver");
+			connection=DriverManager.getConnection(url, user, password);
+			System.out.println("Conexiòn establecida");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error al conectarse a la base");
 		}
 		return connection;
 	}

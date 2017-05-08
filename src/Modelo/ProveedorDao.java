@@ -2,7 +2,9 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import Controlador.Coordinador;
 
@@ -25,5 +27,38 @@ public class ProveedorDao {
 		} finally {
 			Conexion.close();
 		}
+	}
+
+	public void eliminarProveedor(Proveedor proveedor) {
+		Connection conn = Conexion.getConnection();
+		try{
+			PreparedStatement stat = conn.prepareStatement("DELETE FROM proveedores WHERE id = ?;");
+			stat.setInt(1, proveedor.getId());
+			stat.executeUpdate();
+		} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			Conexion.close();
+		}
+		
+	}
+
+	public ArrayList<Proveedor> listarProveedores() {
+		ResultSet resultSet = null;
+		ArrayList<Proveedor> proveedores = new ArrayList<>();
+		Connection conn = Conexion.getConnection();
+			try {
+				Statement stat = conn.createStatement();
+				resultSet = stat.executeQuery("select * from proveedores;");
+				while (resultSet.next()){
+					Proveedor pro = new Proveedor(resultSet.getInt(1),resultSet.getString(2));
+					proveedores.add(pro);
+				}
+			} catch (Exception exc) {
+				throw new RuntimeException(exc);
+			} finally {
+				Conexion.close();
+			}
+		return proveedores;
 	}
 }

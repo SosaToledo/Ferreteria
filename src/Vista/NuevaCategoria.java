@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class NuevaCategoria extends JFrame {
@@ -22,6 +23,7 @@ public class NuevaCategoria extends JFrame {
 	private JPanel contentPane;
 	private Coordinador miCoordinador = new Coordinador();
 	private JTextField tfNombreCategoria;
+	private JTextField tfEliminarCategoria;
 	
 	//Metodos declarados por nosotros
 	public void setCoordinador(Coordinador miCoordinador) {
@@ -54,5 +56,34 @@ public class NuevaCategoria extends JFrame {
 		});
 		btnCargarCategoria.setBounds(7, 97, 117, 25);
 		contentPane.add(btnCargarCategoria);
+		
+		JButton btnMostrar = new JButton("mostrar");
+		btnMostrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 ArrayList<Categoria> categorias = miCoordinador.listarCategorias();
+				 //Use el FOR para mostrar los datos si llegaban bien hasta acá.
+				 //Arreglate vos ahora. Puto.
+				 for (int i=0;i<categorias.size();i++){
+					 System.out.println(categorias.get(i).getNombre());
+				 }
+			}
+		});
+		btnMostrar.setBounds(7, 151, 117, 25);
+		contentPane.add(btnMostrar);
+		
+		tfEliminarCategoria = new JTextField();
+		tfEliminarCategoria.setBounds(164, 61, 114, 19);
+		contentPane.add(tfEliminarCategoria);
+		tfEliminarCategoria.setColumns(10);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int id =  Integer.parseInt(tfEliminarCategoria.getText());
+				miCoordinador.eliminarCategoria(new Categoria(id));
+			}
+		});
+		btnEliminar.setBounds(164, 97, 117, 25);
+		contentPane.add(btnEliminar);
 	}
 }

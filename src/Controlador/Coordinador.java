@@ -1,5 +1,8 @@
 package Controlador;
 import Vista.*;
+
+import java.util.ArrayList;
+
 import Modelo.*;
 
 public class Coordinador {
@@ -67,15 +70,42 @@ public class Coordinador {
 	public NuevoArticulo getMiNuevoArticulo() {
 		return miNuevoArticulo;
 	}
+	
+	//Acciones sobre la Categoria 
 	public void insertarCategoria(Categoria categoria) {
 		categoriaDao.insertarCategoria(categoria);
 	}
+	public void eliminarCategoria(Categoria categoria){
+		categoriaDao.eliminarCategoria(categoria);
+	}
+	public ArrayList<Categoria> listarCategorias(){
+		return (ArrayList<Categoria>) categoriaDao.listarCategorias();
+	}
+	//////////////////////////////////////////////////////////
+	
+	//Acciones sobre el Proveedor
 	public void insertarProveedor(Proveedor proveedor) {
 		proveedorDao.insertarProveedores(proveedor);
-		
 	}
+	public void eliminarProveedor(Proveedor proveedor){
+		proveedorDao.eliminarProveedor(proveedor);
+	}
+	public ArrayList<Proveedor> listarProveedores() {
+		return (ArrayList<Proveedor>) proveedorDao.listarProveedores();
+	}
+	
+	/////////////////////////////////////////////////////////
+	
+	//Acciones sobre el Articulo
 	public void insertarArticulo(Articulo articulo){
 		articuloDao.insertarArticulo(articulo);
+	}
+	public void eliminarArticulo(int id){
+		articuloDao.eliminarArticulo(id);
+	}
+	public ArrayList<Articulo> listarArticulos() {
+		return articuloDao.listarArticulos();
+		
 	}
 	
 	
