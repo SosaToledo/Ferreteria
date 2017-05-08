@@ -49,7 +49,7 @@ public class ArticuloDao {
 
 	public ArrayList<Articulo> listarArticulos() {
 		// TODO Auto-generated method stub
-		
+		return new ArrayList<Articulo>();
 	}
 	
 	
