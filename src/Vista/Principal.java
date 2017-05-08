@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.Coordinador;
+import Modelo.Categoria;
 import Modelo.Conexion;
 
 import javax.swing.JLabel;
@@ -15,12 +16,14 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private Coordinador miCoordinador;
+	private ArrayList<Categoria> categorias = null;
 
 	//Metodos declarados por nosotros//
 	///////////////////////////////////

@@ -10,10 +10,6 @@ public class Articulo {
 	private int cantidad;
 	private Categoria categoria;
 	
-	
-	
-	
-	
 	public Articulo(String nombre, String descripcion, float costo, float preciofinal, int cantidad,
 			Categoria categoria) {
 		super();

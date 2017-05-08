@@ -26,6 +26,10 @@ public class Categoria {
 		this.id = 0;
 		this.nombre = nombre;
 	}
+	public Categoria(int id) {
+		super();
+		this.id = id;
+	}
 	
 	 
 }
