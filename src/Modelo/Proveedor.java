@@ -7,10 +7,23 @@ public class Proveedor {
 	public Proveedor(){
 	}
 	
+	
+	public Proveedor(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
+
+
 	public Proveedor(String nombre) {
 		super();
 		this.id = 0;
 		this.nombre = nombre;
+	}
+
+	public Proveedor(int parseInt) {
+		super();
+		this.id = parseInt;
 	}
 
 	public int getId() {

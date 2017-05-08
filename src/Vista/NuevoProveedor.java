@@ -22,6 +22,7 @@ public class NuevoProveedor extends JFrame {
 	private JPanel contentPane;
 	private Coordinador miCoordinador = new Coordinador();
 	private JTextField tfNombreProveedor;
+	private JTextField tfEliminarCategoria;
 	
 	//Metodos declarados por nosotros.
 	public void setCoordinador(Coordinador miCoordinador) {
@@ -54,5 +55,28 @@ public class NuevoProveedor extends JFrame {
 		});
 		btnCargarProveedor.setBounds(17, 85, 117, 25);
 		contentPane.add(btnCargarProveedor);
+		
+		JButton btnMostrarCategorias = new JButton("mostrar");
+		btnMostrarCategorias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				miCoordinador.listarProveedores();
+			}
+		});
+		btnMostrarCategorias.setBounds(20, 146, 117, 25);
+		contentPane.add(btnMostrarCategorias);
+		
+		tfEliminarCategoria = new JTextField();
+		tfEliminarCategoria.setBounds(163, 54, 114, 19);
+		contentPane.add(tfEliminarCategoria);
+		tfEliminarCategoria.setColumns(10);
+		
+		JButton btnEliminar = new JButton("eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				miCoordinador.eliminarProveedor(new Proveedor(Integer.parseInt(tfEliminarCategoria.getText())));
+			}
+		});
+		btnEliminar.setBounds(163, 85, 117, 25);
+		contentPane.add(btnEliminar);
 	}
 }
