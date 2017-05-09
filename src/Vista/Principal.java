@@ -27,6 +27,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class Principal extends JFrame {
 
@@ -47,6 +49,7 @@ public class Principal extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/Iconos/Maintenance-32.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 841, 471);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,11 +85,11 @@ public class Principal extends JFrame {
 		tabArticulo.add(table);
 		
 		JButton btnNuevo = new JButton("Nuevo");
-		btnNuevo.setBounds(248, 342, 89, 23);
+		btnNuevo.setBounds(472, 334, 89, 23);
 		tabArticulo.add(btnNuevo);
 		
 		JButton btnBorrar = new JButton("Borrar");
-		btnBorrar.setBounds(248, 376, 89, 23);
+		btnBorrar.setBounds(472, 368, 89, 23);
 		tabArticulo.add(btnBorrar);
 		
 		JLabel lblNombreProducto = new JLabel("Nombre Producto");
