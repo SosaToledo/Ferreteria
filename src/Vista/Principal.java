@@ -60,25 +60,14 @@ public class Principal extends JFrame {
 	private Coordinador miCoordinador;
 	private ArrayList<Categoria> categorias = null;
 	private JTextField textField;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
 	private JTable table_1;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_6;
 	private JTable table_2;
 	private JTextField textField_10;
-	private JTable table;
+	private JTable Table;
+	private JTable tablaVentas;
 
 	//Metodos declarados por nosotros//
 	///////////////////////////////////
@@ -116,9 +105,9 @@ public class Principal extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		
-		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		Table = new JTable();
+		Table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		Table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		JButton btnNuevo = new JButton("Cargar");
 		btnNuevo.addActionListener(new ActionListener() {
@@ -153,7 +142,7 @@ public class Principal extends JFrame {
 							.addComponent(lblBuscarPor, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE))
-						.addComponent(table, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE))
+						.addComponent(Table, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 9, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -178,7 +167,7 @@ public class Principal extends JFrame {
 								.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblBuscarPor))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(table, GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
+							.addComponent(Table, GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE))
 						.addGroup(gl_tabArticulo.createSequentialGroup()
 							.addComponent(btnBusquedaAvanzada)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -508,113 +497,85 @@ public class Principal extends JFrame {
 		);
 		Proveedores.setLayout(gl_Proveedores);
 		
-		JPanel Ingreso = new JPanel();
-		tabbedPane.addTab("Ingreso", new ImageIcon(Principal.class.getResource("/Iconos/Lista-32.png")), Ingreso, null);
-		Ingreso.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("Ventas", new ImageIcon(Principal.class.getResource("/Iconos/Carrito de compras-32.png")), panel, null);
 		
-		JLabel lblNombre = new JLabel("Nombre");
-		Ingreso.add(lblNombre, "2, 2");
+		JLabel lblCliente = new JLabel("Cliente:");
 		
-		JLabel lblCosto = new JLabel("Costo");
-		Ingreso.add(lblCosto, "4, 2");
+		JComboBox comboBox_7 = new JComboBox();
+		comboBox_7.setModel(new DefaultComboBoxModel(new String[] {"ID"}));
 		
-		JLabel lblPrecioFinal = new JLabel("Precio Final");
-		Ingreso.add(lblPrecioFinal, "6, 2");
+		JComboBox comboBox_8 = new JComboBox();
+		comboBox_8.setModel(new DefaultComboBoxModel(new String[] {"Nombre Cliente", ""}));
 		
-		JLabel lblCategoria = new JLabel("Categoria");
-		Ingreso.add(lblCategoria, "8, 2");
+		JLabel lblFechaDdmmaaaa = new JLabel("FECHA DD/MM/AAAA");
 		
-		JLabel lblCantidad = new JLabel("Cantidad");
-		Ingreso.add(lblCantidad, "10, 2");
+		JLabel lblTipoFactura = new JLabel("Tipo Factura:");
 		
-		JLabel lblProveedor = new JLabel("Proveedor:");
-		Ingreso.add(lblProveedor, "12, 2, right, default");
+		JComboBox comboBox_9 = new JComboBox();
+		comboBox_9.setModel(new DefaultComboBoxModel(new String[] {"Factura A", "Factura B", "Factura C", "\t"}));
 		
-		JComboBox comboBox_1 = new JComboBox();
-		Ingreso.add(comboBox_1, "14, 2, default, center");
+		JLabel lblFacturarDesde = new JLabel("Facturar Desde: ");
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setEditable(true);
-		Ingreso.add(comboBox_2, "2, 4, fill, default");
+		JComboBox comboBox_10 = new JComboBox();
+		comboBox_10.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "Remito", "Pedido"}));
 		
-		textField_3 = new JTextField();
-		Ingreso.add(textField_3, "4, 4, fill, default");
-		textField_3.setColumns(10);
+		JPanel panel_1 = new JPanel();
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblCliente, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox_7, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox_8, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblTipoFactura)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox_9, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+							.addComponent(lblFechaDdmmaaaa))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblFacturarDesde)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox_10, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 857, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCliente)
+						.addComponent(comboBox_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox_8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblFechaDdmmaaaa)
+						.addComponent(lblTipoFactura)
+						.addComponent(comboBox_9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblFacturarDesde)
+						.addComponent(comboBox_10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 256, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(247, Short.MAX_VALUE))
+		);
+		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		textField_4 = new JTextField();
-		Ingreso.add(textField_4, "6, 4, fill, default");
-		textField_4.setColumns(10);
+		tablaVentas = new JTable();
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.setColumnIdentifiers(new String[] { "Cod Interno", "Descripcion", "Cantidad" , "$ Lista", "$ Final", "% Dto.", "Importe" });
 		
-		textField_5 = new JTextField();
-		Ingreso.add(textField_5, "8, 4, fill, default");
-		textField_5.setColumns(10);
-		
-		textField_14 = new JTextField();
-		Ingreso.add(textField_14, "10, 4, fill, default");
-		textField_14.setColumns(10);
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setEditable(true);
-		Ingreso.add(comboBox_3, "2, 6, fill, default");
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		Ingreso.add(textField_7, "4, 6, fill, default");
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		Ingreso.add(textField_8, "6, 6, fill, default");
-		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		Ingreso.add(textField_9, "8, 6, fill, default");
-		
-		textField_15 = new JTextField();
-		textField_15.setColumns(10);
-		Ingreso.add(textField_15, "10, 6, fill, default");
-		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setEditable(true);
-		Ingreso.add(comboBox_4, "2, 8, fill, default");
-		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		Ingreso.add(textField_12, "4, 8, fill, default");
-		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		Ingreso.add(textField_11, "6, 8, fill, default");
-		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		Ingreso.add(textField_13, "8, 8, fill, default");
-		
-		textField_16 = new JTextField();
-		textField_16.setColumns(10);
-		Ingreso.add(textField_16, "10, 8, fill, default");
+		tablaVentas.setModel(modelo);
+		tablaVentas.getColumnModel().getColumn(0).setPreferredWidth(73);
+		tablaVentas.setFillsViewportHeight(true);
+		panel_1.add(tablaVentas, BorderLayout.CENTER);
+		panel.setLayout(gl_panel);
 	}
 	
 	public static void main(String[] ar) {
