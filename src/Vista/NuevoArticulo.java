@@ -47,7 +47,7 @@ public class NuevoArticulo extends JFrame {
 		JButton btnCargar = new JButton("cargar");
 		btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Articulo a = new Articulo("leche", "producto alimenticio", 20, 26, 5, new Categoria("lacteos", 1));
+				Articulo a = new Articulo(new Categoria("lacteos", 1),"leche", 5, 20, 26, "producto alimenticio");
 				miCoordinador.insertarArticulo(a);
 			}
 		});
