@@ -2,6 +2,8 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.sun.org.apache.bcel.internal.generic.ArithmeticInstruction;
@@ -48,8 +50,28 @@ public class ArticuloDao {
 	}
 
 	public ArrayList<Articulo> listarArticulos() {
-		return null;
-		// TODO Auto-generated method stub
+		ResultSet resultset = null;
+		ArrayList<Articulo> articulos = new ArrayList<>();
+		Connection conn = Conexion.getConnection();
+		try{
+			Statement stat = conn.createStatement();
+			resultset = stat.executeQuery("select c.nombre, c.id, a.nombre, costo, cantidad, precio, descripcion from articulos a inner join categorias c a.id = c. id;");
+			while (resultset.next()){
+				Articulo a = new Articulo(
+					new Categoria(resultset.getString(1),resultset.getInt(2)),
+					resultset.getString(3),
+					resultset.getFloat(4),
+					resultset.getInt(5),
+					resultset.getFloat(6),
+					resultset.getString(7)
+				);
+				articulos.add(a);
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return articulos;
+		
 	}
 	
 	

@@ -10,8 +10,7 @@ public class Articulo {
 	private int cantidad;
 	private Categoria categoria;
 	
-	public Articulo(String nombre, String descripcion, float costo, float preciofinal, int cantidad,
-			Categoria categoria) {
+	public Articulo(Categoria categoria, String nombre, float costo, int cantidad,float preciofinal, String descripcion) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
