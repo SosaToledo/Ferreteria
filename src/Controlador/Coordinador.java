@@ -1,6 +1,7 @@
 package Controlador;
 import Vista.*;
 
+import java.awt.Window;
 import java.util.ArrayList;
 
 import Modelo.*;
@@ -23,6 +24,8 @@ public class Coordinador {
 	
 	private ControladorPrincipal controladorPrincipal;
 	private Logica logica;
+	private BusquedaAvanzadaClientes miBusquedaAvanzadaClientes;
+	private BusquedaAvanzadaArt miBusquedaAvanzadaArt;
 	
 	////////////////////////////////////////////////////////////////////////////////////////
 	//Aca al final solo declaramos los metodos para setear las instancias que vamos a usar//
@@ -54,6 +57,12 @@ public class Coordinador {
 	}
 	public void setLogica(Logica logica) {
 		this.logica = logica;
+	}
+	public void setBusquedaAvanzandaClientes (BusquedaAvanzadaClientes busquedaAvanzadaClientes){
+		this.miBusquedaAvanzadaClientes=busquedaAvanzadaClientes;
+	}
+	public void setBusquedaAvanzadaArt(BusquedaAvanzadaArt busquedaAvanzadaArt){
+		this.miBusquedaAvanzadaArt=busquedaAvanzadaArt;
 	}
 	
 	//Acciones generadas por el usuario
@@ -106,6 +115,12 @@ public class Coordinador {
 	public ArrayList<Articulo> listarArticulos() {
 		return articuloDao.listarArticulos();
 		
+	}
+	public void nuevaBusquedaAvanzadaClientes() {
+		miBusquedaAvanzadaClientes.setVisible(true);
+	}
+	public void nuevaBusquedaAvanzadaArt() {
+		this.miBusquedaAvanzadaArt.setVisible(true);
 	}
 	
 	

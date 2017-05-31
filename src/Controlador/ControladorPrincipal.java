@@ -14,6 +14,8 @@ public class ControladorPrincipal {
 		NuevoArticulo miNuevoArticulo = new NuevoArticulo();
 		NuevaCategoria miNuevaCategoria = new NuevaCategoria();
 		NuevoProveedor miNuevoProveedor = new NuevoProveedor();
+		BusquedaAvanzadaClientes miBusquedaAvanzadaClientes = new BusquedaAvanzadaClientes();
+		BusquedaAvanzadaArt miBusquedaAvanzadaArt = new BusquedaAvanzadaArt();
 		
 		//estas pertenecen a controlador
 		Coordinador miCoordinador = new Coordinador();
@@ -29,6 +31,8 @@ public class ControladorPrincipal {
 		miNuevoArticulo.setCoordinador(miCoordinador);
 		miNuevaCategoria.setCoordinador(miCoordinador);
 		miNuevoProveedor.setCoordinador(miCoordinador);
+		miBusquedaAvanzadaClientes.setCoordinador(miCoordinador);
+		miBusquedaAvanzadaArt.setCoordinador(miCoordinador);
 		
 		miLogica.setCoordinador(miCoordinador);
 		
@@ -36,11 +40,14 @@ public class ControladorPrincipal {
 		categoriaDao.setCoordinador(miCoordinador);
 		proveedorDao.setCoordinador(miCoordinador);
 		
-		//Establecer la relacion coordinador - clase
+		/////////////////////////////////////////////////////
+		//Establecer la relacion coordinador - clase/////////
 		miCoordinador.setMiVentanaPrincipal(miVentanaPrincipal);
 		miCoordinador.setMiNuevoArticulo(miNuevoArticulo);
 		miCoordinador.setMiNuevaCategoria(miNuevaCategoria);
 		miCoordinador.setMiNuevoProveedor(miNuevoProveedor);
+		miCoordinador.setBusquedaAvanzandaClientes(miBusquedaAvanzadaClientes);
+		miCoordinador.setBusquedaAvanzadaArt(miBusquedaAvanzadaArt);
 		
 		miCoordinador.setLogica(miLogica);
 		

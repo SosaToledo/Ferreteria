@@ -56,11 +56,12 @@ import java.awt.Insets;
 import java.awt.Dialog.ModalExclusionType;
 import javax.swing.JScrollBar;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.Icon;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
-	private Coordinador miCoordinador;
+	private Coordinador miCoordinador = new Coordinador();
 	private ArrayList<Categoria> categorias = null;
 	private JTextField txtCodNombreCategoria;
 	private JTable table_1;
@@ -73,7 +74,6 @@ public class Principal extends JFrame {
 	private JTable table_3;
 	private JTextField textField;
 	private JTextField textField_3;
-	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField txtCategoria;
 	private JTextField textField_7;
@@ -91,7 +91,6 @@ public class Principal extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/Iconos/Maintenance-32.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 664);
-		//setExtendedState(JFrame.MAXIMIZED_BOTH);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -131,6 +130,11 @@ public class Principal extends JFrame {
 		});
 		
 		JButton btnBusquedaAvanzada = new JButton("Busqueda avanzada");
+		btnBusquedaAvanzada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				miCoordinador.nuevaBusquedaAvanzadaArt();				
+			}
+		});
 		
 		JSeparator separator_10 = new JSeparator();
 		
@@ -496,11 +500,6 @@ public class Principal extends JFrame {
 		
 		JLabel lblCuit = new JLabel("CUIT: ");
 		
-		JLabel lblTelefono = new JLabel("Telefono:");
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		
 		JLabel lblDireccion = new JLabel("Direccion:");
 		
 		textField_5 = new JTextField();
@@ -509,16 +508,20 @@ public class Principal extends JFrame {
 		JLabel lblCuit_1 = new JLabel("Categoria:");
 		
 		txtCategoria = new JTextField();
-		txtCategoria.setText("Categoria:");
 		txtCategoria.setColumns(10);
+		
+		JSeparator separator_5 = new JSeparator();
+		
+		JSeparator separator_6 = new JSeparator();
+		separator_6.setOrientation(SwingConstants.VERTICAL);
 		GroupLayout gl_tabVentas = new GroupLayout(tabVentas);
 		gl_tabVentas.setHorizontalGroup(
-			gl_tabVentas.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_tabVentas.createSequentialGroup()
+			gl_tabVentas.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_tabVentas.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_tabVentas.createSequentialGroup()
-							.addComponent(table, GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
+							.addComponent(table, GroupLayout.DEFAULT_SIZE, 1031, Short.MAX_VALUE)
 							.addContainerGap())
 						.addGroup(Alignment.TRAILING, gl_tabVentas.createSequentialGroup()
 							.addGroup(gl_tabVentas.createParallelGroup(Alignment.TRAILING)
@@ -527,18 +530,16 @@ public class Principal extends JFrame {
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(comboBox_7, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(comboBox_8, 0, 288, Short.MAX_VALUE)
+									.addComponent(comboBox_8, 0, 459, Short.MAX_VALUE)
 									.addGap(18)
 									.addComponent(btnBuscar)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(lblTipoFactura)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox_9, 0, 92, Short.MAX_VALUE)
-									.addGap(22)
-									.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
+									.addComponent(lblFacturarDesde)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(comboBox_10, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_tabVentas.createSequentialGroup()
 									.addComponent(lblCodigoNombre_1, GroupLayout.PREFERRED_SIZE, 528, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
 									.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
 										.addComponent(btnGuardar_2, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnCancelar)
@@ -564,77 +565,71 @@ public class Principal extends JFrame {
 							.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_tabVentas.createSequentialGroup()
 									.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+									.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_tabVentas.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(textField, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)))
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(textField, GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+									.addComponent(lblCuit, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_tabVentas.createSequentialGroup()
-									.addComponent(lblFacturarDesde)
+									.addComponent(lblCuit_1, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox_10, 0, 208, Short.MAX_VALUE)))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(txtCategoria, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblDireccion, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)))
+							.addGap(10)
+							.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addComponent(separator_6, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
+							.addGap(28)
 							.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_tabVentas.createSequentialGroup()
-									.addComponent(lblCuit, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-									.addGap(4)
-									.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_tabVentas.createSequentialGroup()
-									.addComponent(lblTelefono, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-									.addGap(4)
-									.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)))
-							.addGap(274))
+									.addComponent(lblTipoFactura)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(comboBox_9, 0, 92, Short.MAX_VALUE))
+								.addComponent(label_2, GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+							.addContainerGap(51, GroupLayout.PREFERRED_SIZE))
 						.addGroup(Alignment.TRAILING, gl_tabVentas.createSequentialGroup()
-							.addComponent(lblCuit_1, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-							.addGap(4)
-							.addComponent(txtCategoria, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblDireccion, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-							.addGap(4)
-							.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(274, Short.MAX_VALUE))))
+							.addComponent(separator_5, GroupLayout.PREFERRED_SIZE, 860, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 		);
 		gl_tabVentas.setVerticalGroup(
 			gl_tabVentas.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_tabVentas.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_tabVentas.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lblCliente)
-							.addComponent(comboBox_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(comboBox_8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnBuscar)
-							.addComponent(lblTipoFactura)
-							.addComponent(comboBox_9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_tabVentas.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCliente)
+						.addComponent(comboBox_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBox_8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnBuscar)
+						.addComponent(lblFacturarDesde)
+						.addComponent(comboBox_10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_tabVentas.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_tabVentas.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lblFacturarDesde)
-							.addComponent(comboBox_10, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_tabVentas.createSequentialGroup()
-								.addGap(3)
-								.addComponent(lblTelefono))
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_tabVentas.createParallelGroup(Alignment.BASELINE)
-							.addComponent(lblNombre)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_tabVentas.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCuit))
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addComponent(separator_5, GroupLayout.PREFERRED_SIZE, 6, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_tabVentas.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblCuit_1))
-						.addComponent(txtCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_tabVentas.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblDireccion))
-						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_tabVentas.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNombre)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblCuit)
+								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_tabVentas.createParallelGroup(Alignment.BASELINE)
+									.addComponent(lblDireccion)
+									.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(txtCategoria, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(lblCuit_1))
+								.addGroup(gl_tabVentas.createParallelGroup(Alignment.BASELINE)
+									.addComponent(lblTipoFactura)
+									.addComponent(comboBox_9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+						.addComponent(separator_6, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(table, GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+					.addComponent(table, GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_tabVentas.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_tabVentas.createSequentialGroup()
@@ -659,14 +654,14 @@ public class Principal extends JFrame {
 									.addComponent(btnCancelar)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(btnGuardar_2)))))
-					.addGap(0))
+					.addContainerGap())
 		);
 		DefaultTableModel modelo = new DefaultTableModel();
 		modelo.setColumnIdentifiers(new String[] { "Cod Interno", "Descripcion", "Cantidad" , "$ Lista", "$ Final", "% Dto.", "Importe" });
 		tabVentas.setLayout(gl_tabVentas);
 		
 		JPanel tabCompras = new JPanel();
-		tabbedPane.addTab("Compras", new ImageIcon(Principal.class.getResource("/Iconos/Lista-32.png")), tabCompras, null);
+		tabbedPane.addTab("Compras", new ImageIcon(Principal.class.getResource("/Iconos/Mano-moneda-32.png")), tabCompras, null);
 		
 		JLabel label_1 = new JLabel("FECHA DD/MM/AAAA");
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -801,7 +796,7 @@ public class Principal extends JFrame {
 		tabCompras.setLayout(gl_tabCompras);
 		
 		JPanel tabClientes = new JPanel();
-		tabbedPane.addTab("Clientes", null, tabClientes, null);
+		tabbedPane.addTab("Clientes", new ImageIcon(Principal.class.getResource("/Iconos/Clientes-32.png")), tabClientes, null);
 		
 		JLabel lblBuscarPorNombre = new JLabel("Buscar por nombre:");
 		
@@ -816,6 +811,11 @@ public class Principal extends JFrame {
 		JButton btnAltaClientes = new JButton("Alta Clientes");
 		
 		JButton btnBusquedaAvanzada_1 = new JButton(" busqueda avanzada");
+		btnBusquedaAvanzada_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				miCoordinador.nuevaBusquedaAvanzadaClientes();
+			}
+		});
 		GroupLayout gl_tabClientes = new GroupLayout(tabClientes);
 		gl_tabClientes.setHorizontalGroup(
 			gl_tabClientes.createParallelGroup(Alignment.LEADING)
@@ -853,45 +853,109 @@ public class Principal extends JFrame {
 		);
 		tabClientes.setLayout(gl_tabClientes);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		tabbedPane.addTab("New tab", null, scrollPane, null);
+		JScrollPane tabReportes = new JScrollPane();
+		tabReportes.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
+		tabReportes.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		tabbedPane.addTab("Reportes", new ImageIcon(Principal.class.getResource("/Iconos/Lista-32.png")), tabReportes, null);
 		
 		JPanel panel = new JPanel();
-		scrollPane.setViewportView(panel);
+		tabReportes.setColumnHeaderView(panel);
 		
-		JLabel lblGenerarReporteDe = new JLabel("Reporte de categorias:");
+		JLabel lblGenerarReporteDe = new JLabel("Reporte de articulos:");
 		lblGenerarReporteDe.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGenerarReporteDe.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
-		JButton btnGenerar = new JButton("Generar");
-		btnGenerar.setToolTipText("te la robo un abuelo");
-		
 		JSeparator separator_13 = new JSeparator();
+		
+		JLabel lblPorDebajoDel = new JLabel("Por debajo del stock minimo");
+		
+		JLabel lblEstadoDeCuenta = new JLabel("Estado de cuenta con proveedor");
+		
+		JLabel lblGenerarPedidoDe = new JLabel("Generar pedido de faltantes");
+		
+		JLabel lblListaDeClientes = new JLabel("Lista de clientes morosos");
+		
+		JLabel lblMovimientosDeUn = new JLabel("Movimientos de un cliente");
+		
+		JLabel lblVentasMensuales = new JLabel("Ventas mensuales");
+		
+		JLabel lblComprasMensuales = new JLabel("compras mensuales");
+		
+		JLabel lblVentasYCompras = new JLabel("Ventas y compras anuales");
+		
+		JLabel lblGananciasMensualesY = new JLabel("Ganancias mensuales y anuales");
+		
+		JLabel lblProductoMasVendido = new JLabel("Producto mas vendido de un periodo");
+		
+		JLabel lblPorcentajesDeMedio = new JLabel("Porcentajes de medio de pago durante un periodo");
+		
+		JLabel lblAgregarElemntoO = new JLabel("Agregar elemnto o pesta\u00F1a de caja diaria donde se registre la negreada");
+		
+		JLabel lblStockDeMercaderia = new JLabel("Stock de mercaderia ");
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(90)
-							.addComponent(btnGenerar))
+						.addComponent(lblGenerarReporteDe)
+						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(lblPorDebajoDel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblEstadoDeCuenta, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
 						.addComponent(separator_13, GroupLayout.PREFERRED_SIZE, 833, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblGenerarReporteDe))
-					.addContainerGap(16, Short.MAX_VALUE))
+						.addComponent(lblGenerarPedidoDe, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblListaDeClientes, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblMovimientosDeUn, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblVentasMensuales, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblComprasMensuales, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblVentasYCompras, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblGananciasMensualesY, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblProductoMasVendido, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblPorcentajesDeMedio, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(35, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(472, Short.MAX_VALUE)
+					.addComponent(lblAgregarElemntoO, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblStockDeMercaderia, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(472, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblGenerarReporteDe, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
-					.addGap(43)
-					.addComponent(btnGenerar)
+					.addGap(18)
+					.addComponent(lblPorDebajoDel)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblEstadoDeCuenta)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblGenerarPedidoDe)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblListaDeClientes)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblMovimientosDeUn)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblVentasMensuales)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblComprasMensuales)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblVentasYCompras)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblGananciasMensualesY)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblProductoMasVendido)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblPorcentajesDeMedio)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblStockDeMercaderia)
+					.addPreferredGap(ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+					.addComponent(lblAgregarElemntoO)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(separator_13, GroupLayout.PREFERRED_SIZE, 6, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(495, Short.MAX_VALUE))
+					.addGap(51))
 		);
 		panel.setLayout(gl_panel);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

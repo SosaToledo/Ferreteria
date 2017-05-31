@@ -16,6 +16,9 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+
+import Controlador.Coordinador;
+
 import java.awt.Color;
 import javax.swing.JSeparator;
 
@@ -32,26 +35,12 @@ public class BusquedaAvanzadaArt extends JFrame {
 	private JTextField textField_7;
 	private JTextField textField_9;
 	private JTable table_1;
+	private Coordinador miCoordinador;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BusquedaAvanzadaArt frame = new BusquedaAvanzadaArt();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public void setCoordinador(Coordinador miCoordinador) {
+		this.miCoordinador=miCoordinador;
 	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public BusquedaAvanzadaArt() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -192,4 +181,6 @@ public class BusquedaAvanzadaArt extends JFrame {
 		btnGenerarReporte.setBounds(287, 539, 667, 23);
 		contentPane.add(btnGenerarReporte);
 	}
+
+
 }

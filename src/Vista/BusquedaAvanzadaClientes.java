@@ -16,6 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+
+import Controlador.Coordinador;
+
 import java.awt.Color;
 
 public class BusquedaAvanzadaClientes extends JFrame {
@@ -25,26 +28,14 @@ public class BusquedaAvanzadaClientes extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTable table;
+	private Coordinador miCoordinador;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BusquedaAvanzadaClientes frame = new BusquedaAvanzadaClientes();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
+	public void setCoordinador(Coordinador miCoordinador) {
+		this.miCoordinador = miCoordinador;
 	}
-
-	/**
-	 * Create the frame.
-	 */
+	
+	
 	public BusquedaAvanzadaClientes() {
 		setResizable(false);
 		setBounds(100, 100, 895, 716);
@@ -147,4 +138,5 @@ public class BusquedaAvanzadaClientes extends JFrame {
 		table.setBounds(10, 151, 872, 530);
 		contentPane.add(table);
 	}
+
 }
